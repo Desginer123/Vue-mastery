@@ -1,32 +1,18 @@
 <template>
     <div class="app">
-        <h4>Создание поста</h4>
-        <form @submit.prevent action="">
-            <input
-                v-bind:value="title"
-                @input="title = $event.target.value"
-                class="input"
-                type="text"
-                placeholder="Название" />
-            <input
-                v-bind:value="body"
-                @input="body = $event.target.value"
-                class="input"
-                type="text"
-                placeholder="Описание" />
-            <button @click="createPost" class="btn" type="submit">
-                Создать
-            </button>
-        </form>
-        <div class="post" v-for="post in posts" key="post.id">
-            <div><strong>Название: </strong>{{ post.title }}</div>
-            <div>Описание: {{ post.body }}</div>
-        </div>
+        <post-form @create="createPost"></post-form>
+        <post-list :posts="posts"></post-list>
     </div>
 </template>
 
 <script>
+import PostForm from "./components/PostForm.vue";
+import PostList from "./components/PostList.vue";
 export default {
+    components: {
+        PostForm,
+        PostList,
+    },
     data() {
         return {
             posts: [
@@ -54,16 +40,8 @@ export default {
         };
     },
     methods: {
-        createPost(e) {
-            console.log(document.querySelector("input").value);
-            const newPost = {
-                id: Date.now(),
-                title: this.title,
-                body: this.body,
-            };
-            this.posts.push(newPost);
-            this.title = "";
-            this.body = "";
+        createPost(post) {
+            console.log(post);
         },
     },
 };
@@ -74,53 +52,9 @@ export default {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 .app {
     padding: 20px;
-}
-.post {
-    padding: 15px;
-    border: 2px solid teal;
-    margin-top: 15px;
-}
-.post:first-child {
-    margin-top: 10px;
-}
-form {
-    display: flex;
-    flex-direction: column;
-}
-.input {
-    width: 100%;
-    border: 1px solid teal;
-    padding: 10px 15px;
-    margin-top: 10px;
-}
-.input:focus {
-    outline: none;
-}
-.input::placeholder {
-    transition: opacity 0.3s ease-in-out;
-}
-.input:focus::placeholder {
-    opacity: 0;
-}
-.btn {
-    max-width: 280px;
-    align-self: flex-end;
-    padding: 10px 15px;
-    color: #fff;
-    border-radius: 5px;
-    background-color: teal;
-    font-size: 18px;
-    font-weight: 600;
-    border: none;
-    outline: none;
-    margin-top: 10px;
-    transition: background-color 0.3s ease-in-out;
-    cursor: pointer;
-}
-.btn:hover {
-    background-color: turquoise;
 }
 </style>
