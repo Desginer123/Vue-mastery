@@ -4,6 +4,7 @@
         <post-item
         v-for="post in posts"
         :post="post"
+        @remove="$emit('remove', post)"
         key="post.id"></post-item>
     </div>
 </template>
@@ -11,6 +12,7 @@
 import PostItem from "./PostItem.vue";
 export default {
     components: {PostItem},
+    
     props: {
         posts: {
             type: Array,
