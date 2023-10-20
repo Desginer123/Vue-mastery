@@ -1,6 +1,10 @@
 <template>
     <div class="app">
-        <post-form @create="createPost"></post-form>
+        <h1>Страница записей</h1>
+        <my-button class="create-post-btn" @click="openModal">Создать запись</my-button>
+        <my-modal v-model:show="modalVisible">
+            <post-form @create="createPost"></post-form>
+        </my-modal>
         <post-list :posts="posts" @remove="removePost"></post-list>
     </div>
 </template>
@@ -37,14 +41,19 @@ export default {
                     body: "javascript4 is langauge",
                 },
             ],
+            modalVisible: false,
         };
     },
     methods: {
         createPost(post) {
-            this.posts.push(post)
+            this.posts.push(post);
+            this.modalVisible = false
         },
         removePost(post) {
-            this.posts = this.posts.filter(item => item.id !== post.id)
+            this.posts = this.posts.filter((item) => item.id !== post.id);
+        },
+        openModal() {
+            this.modalVisible = true
         }
     },
 };
@@ -59,5 +68,8 @@ export default {
 }
 .app {
     padding: 20px;
+}
+.create-post-btn {
+    margin-bottom: 20px;
 }
 </style>
