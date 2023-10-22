@@ -9,7 +9,6 @@ export default {
     },
     methods: {
         updateInput(e) {
-            console.log('test')
             this.$emit("update:modelValue", e.target.value);
         },
     },
@@ -21,6 +20,7 @@ export default {
     border: 1px solid teal;
     padding: 10px 15px;
     margin-top: 10px;
+    font-size: 24px;
 }
 .input:focus {
     outline: none;

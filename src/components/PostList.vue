@@ -1,13 +1,13 @@
 <template>
     <div v-if="posts.length > 0">
-        <h3>Список записей</h3>
+        <h2>Список записей</h2>
         <post-item
             v-for="post in posts"
             :post="post"
             @remove="$emit('remove', post)"
             key="post.id"></post-item>
     </div>
-    <h2 v-else>Список записей пуст</h2>
+    <h2 class="empty" v-else>Список записей пуст</h2>
 </template>
 <script>
 import PostItem from "./PostItem.vue";
@@ -23,7 +23,7 @@ export default {
 };
 </script>
 <style scoped>
-h2 {
+h2.empty {
     color: red;
 }
 </style>

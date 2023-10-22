@@ -6,6 +6,7 @@
             class="input"
             placeholder="Название"
             type="text"
+            v-focus
             v-model="post.title" />
         <my-input
             class="input"
@@ -31,7 +32,7 @@ export default {
     },
     methods: {
         createPost(e) {
-            this.post.id = Date.now();
+            this.post.id = "";
             this.$emit("create", this.post);
             this.post = {
                 title: "",

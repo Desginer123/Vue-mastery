@@ -19,10 +19,12 @@ export default {
     border: none;
     outline: none;
     margin-top: 10px;
+    border: 1px solid teal;
     transition: background-color 0.3s ease-in-out;
     cursor: pointer;
 }
 .btn:hover {
     background-color: turquoise;
+    border: 1px solid turquoise
 }
 </style>

@@ -5,6 +5,13 @@
             <div>Описание: {{ post.body }}</div>
         </div>
         <div class="post-buttons">
+            <my-button
+                v-show="post.id !== ''"
+                class="open"
+                @click="$router.push(`/posts/${post.id}`)"
+                >Открыть</my-button
+            >
+
             <my-button @click="$emit('remove', post)">Удалить</my-button>
         </div>
     </div>
@@ -30,5 +37,13 @@ export default {
 }
 .post:first-child {
     margin-top: 10px;
+}
+.post-buttons {
+    display: flex;
+    gap: 10px;
+}
+.open {
+    background-color: #fff;
+    color: teal;
 }
 </style>

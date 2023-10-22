@@ -6,19 +6,10 @@
     </div>
 </template>
 <script>
+import toggleMixin from '@/mixins/toggleMixin'
 export default {
     name: "my-modal",
-    props: {
-        show: {
-            type: Boolean,
-            default: false,
-        },
-    },
-    methods: {
-        hideDialog() {
-            this.$emit('update:show', false)
-        }
-    }
+    mixins: [toggleMixin]
 };
 </script>
 <style scoped>
@@ -39,6 +30,8 @@ export default {
     border-radius: 12px;
     min-width: 300px;
     min-height: 50px;
+    width: 100%;
+    max-width: 600px;
     padding: 40px;
 }
 </style>
