@@ -1,6 +1,6 @@
 <template>
     <div class="navbar">
-        <RouterLink to="/" class="title">BirdHouse</RouterLink>
+        <RouterLink to="/" class="title"><img src="@/assets/images/vue.png" class="logo">Vue mastery</RouterLink>
         <div class="navbar__btns">
             <my-button @click="$router.push('/posts')">Записи</my-button>
             <my-button @click="$router.push('/about')">О нас</my-button>
@@ -23,7 +23,14 @@ export default {
     font-weight: 700;
     text-decoration: none;
     margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
+.logo {
+    max-width: 54px;
+}
+
 .navbar {
     background: gray;
     box-shadow: 0, 2px, 4px, gray;

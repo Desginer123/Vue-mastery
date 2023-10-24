@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Добро пожаловать на сайт BirdHouse</h1>
+        <h1>Добро пожаловать на сайт Vue mastery</h1>
     </div>
 </template>
 <script>
